@@ -5,10 +5,16 @@
   background-color: white;
   z-index: 100;
   align-items: flex-start;
-  padding: 30px;
+  padding: 26px;
   border-bottom: 1px solid lightgray;
 }
 
+.resultPage__resultImage {
+  object-fit: contain;
+  height: 20px;
+  width: 20px;
+  margin-right: 20px;
+}
 .resultPage__headerBody > .search > .search__input {
   margin-top: 0;
   width: unset;
@@ -18,8 +24,9 @@
 
 .resultPage__logo {
   object-fit: contain;
-  height: 50px;
+  height: 39px;
   margin-right: 50px;
+  margin-top: 7px;
 }
 
 .resultPage__options {
@@ -50,4 +57,32 @@
 
 .resultPage__option a {
   margin-left: 5px;
+}
+
+.resultPage__result {
+  margin: 40px 0;
+}
+
+.resultPage__resultCount {
+  color: #70757a;
+  font-size: 14px;
+}
+
+.resultPage__results {
+  max-width: 650px;
+  margin-top: 20px;
+  margin-left: 240px;
+  margin-bottom: 100px;
+}
+.resultPage__resultTitle {
+  text-decoration: none;
+}
+.resultPage__resultTitle :hover {
+  text-decoration: underline;
+}
+.resultPage__resultTitle > h2 {
+  font-weight: 500;
+}
+.resultPage__resultSnippet {
+  margin-top: 10px;
 }

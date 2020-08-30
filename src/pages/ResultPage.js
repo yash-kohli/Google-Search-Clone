@@ -16,9 +16,10 @@ function ResultPage() {
   const [{ term }, dispatch] = useStateValue();
 
   //Live API CALL
-  //const { data } = useGoogleSearch(term);
+  const { data } = useGoogleSearch(term);
 
-  const data = Response;
+  //Mock api call
+  //const data = Response;
   console.log(data);
   return (
     <div className="resultPage">
@@ -31,7 +32,7 @@ function ResultPage() {
           />
         </Link>
         <div className="resultPage__headerBody">
-          <Search hideButtons />
+          <Search hideButtons /> {/* Search component */}
           <div className="resultPage__options">
             <div className="resultPage__optionsLeft">
               <div className="resultPage__option">
@@ -76,7 +77,38 @@ function ResultPage() {
           </div>
         </div>
       </div>
-      <div className="resultPage__results"></div>
+      {term && (
+        <div className="resultPage__results">
+          <p className="resultPage__resultCount">
+            {" "}
+            About {data?.searchInformation.formattedTotalResults} results{" "}
+            {data?.searchInformation.formattedSearchTime} seconds for {term}
+          </p>
+
+          {data?.items.map((item) => (
+            <div className="resultPage__result">
+              <a className="resultPage__resultLink" href={item.link}>
+                {item.pagemap?.cse_image?.length > 0 &&
+                  item.pagemap?.cse_image[0]?.src && (
+                    <img
+                      className="resultPage__resultImage"
+                      src={
+                        item.pagemap?.cse_image?.length > 0 &&
+                        item.pagemap?.cse_image[0]?.src
+                      }
+                      alt=""
+                    />
+                  )}
+                {item.displayLink}
+              </a>
+              <a className="resultPage__resultTitle" href={item.link}>
+                <h2>{item.title}</h2>
+              </a>
+              <p className="resultPage__resultSnippet">{item.snippet}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
